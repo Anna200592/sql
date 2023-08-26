@@ -36,7 +36,7 @@ public class DeadlineTests {
         loginPage.verifyError();
     }
     @Test
-    @DisplayName("Should get error notification if user is not exist in base and activ user and " +
+    @DisplayName("Should get error notification if user is not exist in base and active user and " +
             "random verification code")
     void shouldGetErrorNotificationIfLoginWithRandomUserVerificationCode(){
         var loginPage = open("http//localhost:9999", LoginPage.class);

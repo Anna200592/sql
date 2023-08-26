@@ -17,7 +17,7 @@ public class SqlHelper {
     }
 
     private static Connection getConn() throws SQLException{
-        return DriverManager.getConnection(System.getProperty("db.url"),"app","pass");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
     }
     @SneakyThrows
     public static DataHelper.VerificationCode getVerificationCode(){
