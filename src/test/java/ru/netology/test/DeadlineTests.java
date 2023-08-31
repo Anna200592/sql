@@ -17,10 +17,11 @@ public class DeadlineTests {
         cleanDB();
     }
 
+
     @Test
     @DisplayName("Should successfully login to dashboard with exist login and password from sut test data")
     void shouldSuccessFullLogin(){
-        var loginPage = open("http//localhost:9999", LoginPage.class);
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = loginPage.validLogin(authInfo);
         verificationPage.verifyPageVisibility();
@@ -30,7 +31,7 @@ public class DeadlineTests {
     @Test
     @DisplayName("Should get error notification if user is not exist in base")
     void shouldGetErrorNotificationIfLoginWithRandomUser(){
-        var loginPage = open("http//localhost:9999", LoginPage.class);
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.generateRandomUser();
         loginPage.validLogin(authInfo);
         loginPage.verifyError();
@@ -39,12 +40,12 @@ public class DeadlineTests {
     @DisplayName("Should get error notification if user is not exist in base and active user and " +
             "random verification code")
     void shouldGetErrorNotificationIfLoginWithRandomUserVerificationCode(){
-        var loginPage = open("http//localhost:9999", LoginPage.class);
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = loginPage.validLogin(authInfo);
         verificationPage.verifyPageVisibility();
-        var verificationCode = DataHelper.generateRandomVerificationCode();
-        verificationPage.verify(verificationCode.getCode());
+        var verificationCode = DataHelper.generateRandomVerificationCode().getCode();
+        verificationPage.verify(verificationCode);
         verificationPage.getError();
     }
 }
